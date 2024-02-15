@@ -6,10 +6,21 @@
     <title>Calculadora</title>
 </head>
 <body>
-    <select name="" id="calSelec">
-        <option value="basic">basic</option>
-        <option value="">cientifica</option>
+    <select id="calSelec">
+        <option value="basic">Básica</option>
+        <option value="cientifica">Científica</option>
     </select>
-    <script></script>
+    <iframe id="calculatorFrame" src="/public/calBasic1.html" width="100%" height="900px" frameborder="0"></iframe>
+    <script>
+        document.getElementById('calSelec').addEventListener('change', function() {
+            var selectedOption = this.value;
+            var iframe = document.getElementById('calculatorFrame');
+            if (selectedOption === 'basic') {
+                iframe.src = '/public/calBasic1.html';
+            } else if (selectedOption === 'cientifica') {
+                iframe.src = '/public/entorno.html';
+            }
+        });
+    </script>
 </body>
 </html>
