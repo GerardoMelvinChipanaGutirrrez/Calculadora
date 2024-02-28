@@ -4,22 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <select id="calSelec">
+    <script>
+        $(document).ready(function(){
+                
+                var height = $(window).height();
+              
+                $('#calculatorFrame').css('min-height',height);
+                
+                console.log(height)
+              });
+    </script>
+    <div style="position: relative;">
+    <select style="position: absolute;" id="calSelec">
         <option value="basic">Básica</option>
+        <option value="basic2">Básica 2 con POO</option>
         <option value="cientifica">Científica</option>
     </select>
-    <iframe id="calculatorFrame" src="/public/calBasic1.html" width="100%" height="900px" frameborder="0"></iframe>
+    </div>
+    <iframe id="calculatorFrame" src="/public/calBasic1.html" width="100%" frameborder="0"></iframe>
     <script>
         document.getElementById('calSelec').addEventListener('change', function() {
             var selectedOption = this.value;
             var iframe = document.getElementById('calculatorFrame');
             if (selectedOption === 'basic') {
                 iframe.src = '/public/calBasic1.html';
+            } else if (selectedOption === 'basic2') {
+                iframe.src = '/public/calBasic2.html';
             } else if (selectedOption === 'cientifica') {
                 iframe.src = '/public/entorno.html';
             }
+            
         });
     </script>
 </body>
